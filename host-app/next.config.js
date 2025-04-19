@@ -10,10 +10,7 @@ module.exports = {
           productsRemote: 'productsRemote@http://localhost:3001/_next/static/chunks/remoteEntry.js',
         },
         filename: 'static/chunks/remoteEntry.js', // Burada filename eklenmeli
-        shared: {
-          react: { singleton: true, requiredVersion: false },
-          'react-dom': { singleton: true, requiredVersion: false },
-        },
+        shared: ['react', 'react-dom'],
       })
     );
     return config;

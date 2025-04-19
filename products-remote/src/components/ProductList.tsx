@@ -1,22 +1,34 @@
-import React from 'react';
+// ProductList.tsx
+import React, { useState, useEffect } from 'react';
 
-const products = [
-  { id: 1, name: 'MacBook Air', price: '$999' },
-  { id: 2, name: 'iPhone 14', price: '$899' },
-  { id: 3, name: 'iPad Pro', price: '$799' },
-];
+const ProductList: React.FC = () => {
+  const [products, setProducts] = useState<any[]>([]);  // Ürünlerin tipi
 
-const ProductList = () => (
-  <div>
-    <h2>Ürünler</h2>
-    <ul>
-      {products.map((p) => (
-        <li key={p.id}>
-          {p.name} - {p.price}
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+  // Fake Store API'den veri çekme
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(data => setProducts(data))
+      .catch(error => console.error('Error fetching products:', error));
+  }, []);
+
+  return (
+    <div>
+      <h2>Products</h2>
+      {products.length > 0 ? (
+        <ul>
+          {products.map(product => (
+            <li key={product.id}>
+              <h3>{product.title}</h3>
+              <p>{product.description}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Loading products...</p>
+      )}
+    </div>
+  );
+};
 
 export default ProductList;

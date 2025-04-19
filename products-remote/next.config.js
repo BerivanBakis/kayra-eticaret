@@ -9,12 +9,16 @@ module.exports = {
         exposes: {
           './ProductList': './src/components/ProductList',
         },
-        shared: {
-          react: { singleton: true, requiredVersion: false },
-          'react-dom': { singleton: true, requiredVersion: false },
-        },
+        shared: ['react', 'react-dom'],
+        // shared: {
+        //   react: { singleton: true, requiredVersion: false, eager: true },
+        //   'react-dom': { singleton: true, requiredVersion: false, eager: true  },
+        // },
       })
     );
     return config;
+  },
+  env: {
+    NEXT_PRIVATE_LOCAL_WEBPACK: process.env.NEXT_PRIVATE_LOCAL_WEBPACK
   },
 };
