@@ -6,7 +6,7 @@ module.exports = {
       new NextFederationPlugin({
         name: 'hostApp',  // Bu, host uygulamanızın adı
         remotes: {
-          // Burada 'productsRemote' ismini kullanarak, products-remote'dan gelen bileşenleri kullanıyoruz
+          basketRemote: 'basketRemote@http://localhost:3002/remoteEntry.js',
           productsRemote: 'productsRemote@http://localhost:3001/_next/static/chunks/remoteEntry.js',
         },
         filename: 'static/chunks/remoteEntry.js', // Burada filename eklenmeli
