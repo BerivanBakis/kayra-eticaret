@@ -11,7 +11,7 @@ const mockProducts = [
 export default function Home() {
   return (
     <div>
-      <h1>Host App</h1>
+      {/* <h1>Host App</h1> */}
       <ProductList />  
       <Basket products={mockProducts} />
     </div>
