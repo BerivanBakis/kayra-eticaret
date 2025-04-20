@@ -9,8 +9,12 @@ module.exports = {
           basketRemote: 'basketRemote@http://localhost:3002/remoteEntry.js',
           productsRemote: 'productsRemote@http://localhost:3001/_next/static/chunks/remoteEntry.js',
         },
-        filename: 'static/chunks/remoteEntry.js', // Burada filename eklenmeli
-        shared: ['react', 'react-dom'],
+        exposes: {
+          './store': './shared/store/store',
+          './basketSlice': './shared/store/basketSlice',
+        },
+        filename: 'static/chunks/remoteEntry.js', 
+        shared: ['react', 'react-dom', 'react-redux', '@reduxjs/toolkit'],
       })
     );
     return config;

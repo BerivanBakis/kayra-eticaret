@@ -1,12 +1,15 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Card, Col, Row, Typography, Image } from 'antd';
+import { Card, Col, Row, Typography, Image, Button, message } from 'antd';
+import { useDispatch } from 'react-redux';
+import { addToBasket } from 'hostApp/basketSlice'; // 👈 federated slice import
 
 const { Title, Text } = Typography;
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<any[]>([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -14,6 +17,11 @@ const ProductList: React.FC = () => {
       .then((data) => setProducts(data))
       .catch((error) => console.error('Error fetching products:', error));
   }, []);
+
+  const handleAddToCart = (product: any) => {
+    dispatch(addToBasket(product)); // ✅ Redux store’a ekliyoruz
+    message.success(`"${product.title}" sepete eklendi!`);
+  };
 
   return (
     <div style={{ maxWidth: '80%', margin: '0 auto', padding: '20px 0' }}>
@@ -23,13 +31,7 @@ const ProductList: React.FC = () => {
 
       <Row gutter={[24, 24]}>
         {products.map((product) => (
-          <Col
-            key={product.id}
-            xs={24}
-            sm={12}
-            md={8}
-            lg={6}
-          >
+          <Col key={product.id} xs={24} sm={12} md={8} lg={6}>
             <Card
               hoverable
               cover={
@@ -48,16 +50,16 @@ const ProductList: React.FC = () => {
                 <Text type="secondary" style={{ fontSize: 12 }}>
                   {product.category}
                 </Text>
-                <Title
-                  level={5}
-                  ellipsis={{ rows: 1 }}
-                  style={{ marginTop: 4, marginBottom: 8 }}
-                >
+                <Title level={5} ellipsis={{ rows: 1 }} style={{ marginTop: 4, marginBottom: 8 }}>
                   {product.title}
                 </Title>
-                <Text strong style={{ fontSize: 18 }}>
+                <Text strong style={{ fontSize: 18, display: 'block', marginBottom: 10 }}>
                   ${product.price}
                 </Text>
+
+                <Button type="primary" onClick={() => handleAddToCart(product)}>
+                  Sepete Ekle
+                </Button>
               </div>
             </Card>
           </Col>

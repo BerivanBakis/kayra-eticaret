@@ -1,5 +1,5 @@
 "use client";
-
+import CartPopoverContent from "./CartPopoverContent";
 import React from "react";
 import { Layout, Menu, Space, Popover } from "antd";
 import {
@@ -10,16 +10,7 @@ import {
 
 const { Header } = Layout;
 
-const CartPopoverContent = () => (
-  <div style={{ width: 250 }}>
-    <p>
-      <strong>Sepet</strong>
-    </p>
-    <p>🛍️ Test ürünü 1</p>
-    <p>🛒 Test ürünü 2</p>
-    <p>💳 Toplam: 0₺</p>
-  </div>
-);
+
 const menuItems = [
   { key: "women", label: "Women", href: "#women" },
   { key: "men", label: "Men", href: "#men" },

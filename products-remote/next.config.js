@@ -9,6 +9,9 @@ module.exports = {
         exposes: {
           './ProductList': './src/components/ProductList',
         },
+        remotes: {
+          hostApp: 'hostApp@http://localhost:3000/_next/static/chunks/remoteEntry.js',
+        },
         shared: ['react', 'react-dom'],
         // shared: {
         //   react: { singleton: true, requiredVersion: false, eager: true },
