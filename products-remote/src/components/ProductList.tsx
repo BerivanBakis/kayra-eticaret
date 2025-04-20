@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Row, Typography, Image, Button, message } from 'antd';
 import { useDispatch } from 'react-redux';
-import { addToBasket } from 'hostApp/basketSlice'; // 👈 federated slice import
+import { addToBasket } from 'hostApp/basketSlice'; 
 
 const { Title, Text } = Typography;
 

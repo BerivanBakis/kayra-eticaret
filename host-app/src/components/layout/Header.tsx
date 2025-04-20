@@ -1,27 +1,30 @@
 "use client";
 import CartPopoverContent from "./CartPopoverContent";
 import React from "react";
-import { Layout, Menu, Space, Popover } from "antd";
+import { Layout, Menu, Space, Popover, Badge } from "antd";
 import {
   SearchOutlined,
   ShoppingCartOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../shared/store/store"; // kendi path'ine göre güncelle
 
 const { Header } = Layout;
-
 
 const menuItems = [
   { key: "women", label: "Women", href: "#women" },
   { key: "men", label: "Men", href: "#men" },
   { key: "kids", label: "Kids", href: "#kids" },
   { key: "giftcards", label: "Gift Cards", href: "#giftcards" },
-].map(item => ({
+].map((item) => ({
   ...item,
   label: <a href={item.href}>{item.label}</a>,
 }));
 
 const AppHeader: React.FC = () => {
+  const basketItems = useSelector((state: RootState) => state.basket.items);
+
   return (
     <Header
       style={{
@@ -38,9 +41,7 @@ const AppHeader: React.FC = () => {
       }}
     >
       {/* Sol alan: logo + menü */}
-      <div
-        style={{ display: "flex", alignItems: "center", flex: 1, minWidth: 0 }}
-      >
+      <div style={{ display: "flex", alignItems: "center", flex: 1, minWidth: 0 }}>
         <div
           style={{
             fontSize: 20,
@@ -75,7 +76,9 @@ const AppHeader: React.FC = () => {
           trigger="click"
           placement="bottomRight"
         >
-          <ShoppingCartOutlined style={{ fontSize: 20, cursor: "pointer" }} />
+          <Badge count={basketItems.length} size="small" overflowCount={99}>
+            <ShoppingCartOutlined style={{ fontSize: 20, cursor: "pointer" }} />
+          </Badge>
         </Popover>
 
         <UserOutlined style={{ fontSize: 20, cursor: "pointer" }} />

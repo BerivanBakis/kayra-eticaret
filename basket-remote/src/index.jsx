@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Basket from './components/Basket';
+import { RootState } from "hostApp/store";
 
 const mockProducts = [
   { id: 1, title: "Test Ürün 1", price: 99.99 },
@@ -9,6 +10,6 @@ const mockProducts = [
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Basket products={mockProducts} />
+  <Basket products={RootState} />
 );
 

@@ -32,6 +32,9 @@ module.exports = {
       exposes: {
         './Basket': './src/components/Basket', // Bileşen doğru şekilde expose ediliyor
       },
+      remotes: {
+        hostApp: 'hostApp@http://localhost:3000/_next/static/chunks/remoteEntry.js',
+      },
       shared: ["react", "react-dom"],  // Bu kütüphaneleri paylaşıyoruz
     }),
   ],
