@@ -8,7 +8,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../shared/store/store"; // kendi path'ine göre güncelle
+import { RootState } from "../../../shared/store/store";
 
 const { Header } = Layout;
 
@@ -26,7 +26,7 @@ const AppHeader: React.FC = () => {
   const basketItems = useSelector((state: RootState) => state.basket.items);
 
   return (
-    <Header
+    <Header 
       style={{
         background: "#fff",
         padding: "0 40px",
@@ -40,7 +40,7 @@ const AppHeader: React.FC = () => {
         justifyContent: "space-between",
       }}
     >
-      {/* Sol alan: logo + menü */}
+
       <div style={{ display: "flex", alignItems: "center", flex: 1, minWidth: 0 }}>
         <div
           style={{
@@ -50,7 +50,9 @@ const AppHeader: React.FC = () => {
             whiteSpace: "nowrap",
           }}
         >
+          <a href="/" style={{ color: "inherit", textDecoration: "none" }}>
           LOGO
+        </a>
         </div>
         <Menu
           mode="horizontal"
@@ -66,7 +68,7 @@ const AppHeader: React.FC = () => {
         />
       </div>
 
-      {/* Sağ ikonlar */}
+
       <Space size="large" style={{ marginLeft: 20 }}>
         <SearchOutlined style={{ fontSize: 20, cursor: "pointer" }} />
 

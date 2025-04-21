@@ -13,7 +13,6 @@ export default function Home() {
   return (
     <div>
       <ProductList />
-      <Basket products={basketItems} />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
-  entry: "./src/index.jsx",  // React uygulamanızın başlangıç dosyasına doğru yolu gösterin
+  entry: "./src/index.jsx", 
   mode: "development",
   devServer: {
     port: 3002,
@@ -9,15 +9,15 @@ module.exports = {
     hot: true,
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],  // .jsx uzantısını eklediğinizden emin olun
+    extensions: ['.js', '.jsx', '.json'],  
   },
   output: {
-    publicPath: "auto", // veya localhost:3001 gibi sabit bir URL de kullanabilirsiniz
+    publicPath: "auto", 
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,  // .jsx ve .js dosyalarını işlemek için doğru kural
+        test: /\.(js|jsx)$/, 
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -28,14 +28,14 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "basketRemote",
-      filename: "remoteEntry.js", // Bu dosya remote bileşenleri dışa aktaracak
+      filename: "remoteEntry.js", 
       exposes: {
-        './Basket': './src/components/Basket', // Bileşen doğru şekilde expose ediliyor
+        './Basket': './src/components/Basket', 
       },
       remotes: {
         hostApp: 'hostApp@http://localhost:3000/_next/static/chunks/remoteEntry.js',
       },
-      shared: ["react", "react-dom"],  // Bu kütüphaneleri paylaşıyoruz
+      shared: ["react", "react-dom"], 
     }),
   ],
 };

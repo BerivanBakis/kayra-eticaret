@@ -4,7 +4,7 @@ module.exports = {
   webpack(config, options) {
     config.plugins.push(
       new NextFederationPlugin({
-        name: 'hostApp',  // Bu, host uygulamanızın adı
+        name: 'hostApp', 
         remotes: {
           basketRemote: 'basketRemote@http://localhost:3002/remoteEntry.js',
           productsRemote: 'productsRemote@http://localhost:3001/_next/static/chunks/remoteEntry.js',
@@ -14,7 +14,7 @@ module.exports = {
           './basketSlice': './shared/store/basketSlice',
         },
         filename: 'static/chunks/remoteEntry.js', 
-        shared: ['react', 'react-dom', 'react-redux', '@reduxjs/toolkit'],
+        shared: ['react', 'react-dom', 'react-redux', '@reduxjs/toolkit', "react-router-dom"],
       })
     );
     return config;

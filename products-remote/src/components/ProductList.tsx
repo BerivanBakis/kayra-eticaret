@@ -19,7 +19,7 @@ const ProductList: React.FC = () => {
   }, []);
 
   const handleAddToCart = (product: any) => {
-    dispatch(addToBasket(product)); // ✅ Redux store’a ekliyoruz
+    dispatch(addToBasket(product)); 
     message.success(`"${product.title}" sepete eklendi!`);
   };
 
