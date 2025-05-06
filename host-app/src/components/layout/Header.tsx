@@ -2,6 +2,7 @@
 import CartPopoverContent from "./CartPopoverContent";
 import React from "react";
 import { Layout, Menu, Space, Popover, Badge } from "antd";
+import Link from "next/link";
 import {
   SearchOutlined,
   ShoppingCartOutlined,
@@ -50,9 +51,9 @@ const AppHeader: React.FC = () => {
             whiteSpace: "nowrap",
           }}
         >
-          <a href="/" style={{ color: "inherit", textDecoration: "none" }}>
+        <Link href="/" style={{ color: "inherit", textDecoration: "none" }}>
           LOGO
-        </a>
+        </Link>
         </div>
         <Menu
           mode="horizontal"
